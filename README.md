@@ -11,7 +11,7 @@ License: GNU General Public License version 3 (GPLv3)
 Контакты: https://t.me/pavlowd
 Лицензия: GNU General Public License version 3 (GPLv3)
 
-==================== +++++++++++++++++ ====================
+== == ==
 
 Install
 
