@@ -119,13 +119,13 @@ class ControllerPaymentBtcPayment extends Controller {
 		
 		$this->data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
 		
-		if (isset($this->request->post['bank_transfer_status'])) {
+		if (isset($this->request->post['btc_payment_status'])) {
 			$this->data['btc_payment_status'] = $this->request->post['btc_payment_status'];
 		} else {
 			$this->data['btc_payment_status'] = $this->config->get('btc_payment_status');
 		}
 		
-		if (isset($this->request->post['bank_transfer_sort_order'])) {
+		if (isset($this->request->post['btc_payment_sort_order'])) {
 			$this->data['btc_payment_sort_order'] = $this->request->post['btc_payment_sort_order'];
 		} else {
 			$this->data['btc_payment_sort_order'] = $this->config->get('btc_payment_sort_order');
