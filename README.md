@@ -1,5 +1,5 @@
 Bitcoin Payment for Opencart 1.5.5.1 
-Author: khita.org
+Author: pavlowd (https://khita.org)
 Telegram Contact: https://t.me/pavlowd
 License: GNU General Public License version 3 (GPLv3)
 
