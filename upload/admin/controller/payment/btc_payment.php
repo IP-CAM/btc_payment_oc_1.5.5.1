@@ -23,9 +23,7 @@ class ControllerPaymentBtcPayment extends Controller {
 		$this->data['text_disabled'] = $this->language->get('text_disabled');
 		
 		$this->data['entry_wallet'] = $this->language->get('entry_wallet');
-		//$this->data['entry_timezone'] = $this->language->get('entry_timezone');
-		$this->data['entry_price_change_amount'] = $this->language->get('entry_price_change_amount');
-		$this->data['entry_disable_price_change'] = $this->language->get('entry_disable_price_change');
+		$this->data['entry_price_exchange_api'] = $this->language->get('entry_price_exchange_api');
 		$this->data['entry_total'] = $this->language->get('entry_total');	
 		$this->data['entry_add_percent'] = $this->language->get('entry_add_percent');	
 		$this->data['entry_order_status'] = $this->language->get('entry_order_status');			
@@ -101,19 +99,7 @@ class ControllerPaymentBtcPayment extends Controller {
 			$this->data['btc_payment_order_status_id'] = $this->request->post['btc_payment_order_status_id'];
 		} else {
 			$this->data['btc_payment_order_status_id'] = $this->config->get('btc_payment_order_status_id'); 
-		}
-
-		/*if (isset($this->request->post['btc_payment_timezone'])) {
-			$this->data['btc_payment_timezone'] = $this->request->post['btc_payment_timezone'];
-		} else {
-			$this->data['btc_payment_timezone'] = $this->config->get('btc_payment_timezone'); 
-		} 		*/ 
-
-		if (isset($this->request->post['btc_payment_price_change_amount'])) {
-			$this->data['btc_payment_price_change_amount'] = $this->request->post['btc_payment_price_change_amount'];
-		} else {
-			$this->data['btc_payment_price_change_amount'] = $this->config->get('btc_payment_price_change_amount'); 
-		} 
+		}			
 
 		$this->load->model('localisation/order_status');
 		
@@ -130,6 +116,13 @@ class ControllerPaymentBtcPayment extends Controller {
 		} else {
 			$this->data['btc_payment_sort_order'] = $this->config->get('btc_payment_sort_order');
 		}
+
+		$this->data['exchanges'] = array(
+			//array('codename'=>'bitstamp','name'=>'BitStamp'),
+			//array('codename'=>'binance','name'=>'Binance'),
+			//array('codename'=>'bitfinex','name'=>'BitFinex'),
+			array('codename'=>'blockchaininfo','name'=>'Blockchain.Info')
+		);
 		
 
 		$this->template = 'payment/btc_payment.tpl';

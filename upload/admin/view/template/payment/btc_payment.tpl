@@ -32,27 +32,18 @@
             <td><input type="number" max="100" min="0" style="width:50px" name="btc_payment_add_percent" value="<?php echo $btc_payment_add_percent; ?>" /></td>
           </tr>
           <tr>
-            <td><?php echo $entry_price_change_amount; ?></td>
-            <td><input type="number" max="100" min="0" style="width:50px" name="btc_payment_price_change_amount" value="<?php echo $btc_payment_price_change_amount; ?>" /></td>
-          </tr>
-          <!--<tr>
-            <td><?php echo $entry_timezone; ?></td>
-            <td><?php
-              function select_Timezone($selected = '') {
-                  $OptionsArray = timezone_identifiers_list();
-                      $select= '<select name="btc_payment_timezone">';
-                      foreach($OptionsArray as $key => $row){
-                          $select .='<option value="'.$row.'"';
-                          $select .= ($row == $selected ? ' selected' : '');
-                          $select .= '>'.$row.'</option>';
-                      }
-                      $select.='</select>';
-              return $select;
-              }
-              echo select_Timezone($btc_payment_timezone);
-            ?>
+            <td><?php echo $entry_price_exchange_api; ?></td>
+            <td><select name="btc_payment_price_exchange_api">
+                <?php foreach ($exchanges as $exchange) { ?>
+                <?php if ($exchange['codename'] == $btc_payment_price_exchange_api) { ?>
+                <option value="<?php echo $exchange['codename']; ?>" selected="selected"><?php echo $exchange['name']; ?></option>
+                <?php } else { ?>
+                <option value="<?php echo $exchange['codename']; ?>"><?php echo $exchange['name']; ?></option>
+                <?php } ?>
+                <?php } ?>
+              </select>
             </td>
-          </tr> -->          
+          </tr>
           <tr>
             <td><?php echo $entry_order_status; ?></td>
             <td><select name="btc_payment_order_status_id">

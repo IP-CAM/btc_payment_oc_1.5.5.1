@@ -13,9 +13,8 @@ class ControllerPaymentBtcPayment extends Controller {
 		}
 
 		if(!isset($this->session->data['order_time']) || ($this->session->data['order_time']+900 < time()) || $total_order_usd != $this->session->data['total_usd']){
-			$btc_value = file_get_contents('https://blockchain.info/tobtc?currency=USD&value='.$total_order_usd);
 			$this->session->data['order_time'] = time();
-			$this->session->data['total_btc'] = $btc_value;
+			$this->session->data['total_btc'] = $this->convert_to_btc($total_order_usd,$this->config->get('btc_payment_price_exchange_api'));
 			$this->session->data['total_usd'] = $total_order_usd;
 			$this->data['order_payment_timelimit'] = $this->session->data['order_time']+900;
 		}else{
@@ -46,6 +45,24 @@ class ControllerPaymentBtcPayment extends Controller {
 		
 		$this->render(); 
 	}
+
+	public function convert_to_btc($usd_amount,$exchange){
+		switch($exchange){
+			case "blockchaininfo":
+				$btc_value = file_get_contents('https://blockchain.info/tobtc?currency=USD&value='.$usd_amount);
+				break;
+			case "bitstamp":
+				break;
+			case "binance":
+				break;
+			case "bitfinex":
+				break;
+			default:
+				$btc_value = file_get_contents('https://blockchain.info/tobtc?currency=USD&value='.$usd_amount);
+				break;
+		}
+		return $btc_value;
+	}	
 	
 	public function confirm() {
 		$this->language->load('payment/btc_payment');
